@@ -149,7 +149,7 @@ function Home({ cartTotal, orderId, user, deliveryCharge, isFullAmountPaid }) {
 }
 export default Home;
 
-export async function getStaticProps({ req, res }) {
+export async function getServerProps({ req, res }) {
   await dbConnect();
 
   const { user } = await getSession(req, res);
