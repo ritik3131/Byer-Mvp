@@ -4,9 +4,9 @@ import { getSession } from "../../../lib/get-session";
 import AWS from "aws-sdk";
 
 AWS.config.update({
-  region: process.env.AWS_REGION,
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCES_KEY,
+  region: process.env.AWS_REGION_PRODUCTION,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID_PRODUCTION,
+  secretAccessKey: process.env.AWS_SECRET_ACCES_KEY_PRODUCTION,
 });
 
 dbConnect();
