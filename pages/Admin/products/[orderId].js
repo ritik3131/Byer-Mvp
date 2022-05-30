@@ -8,7 +8,7 @@ import Orders from "../../../models/orderModel";
 import Products from "../../../models/productModel";
 import { getSession } from "../../../lib/get-session";
 
-export default function AdminPanel4({ products }) {
+function AdminPanel4({ products }) {
   function createTempHeading(product) {
     return {
       id: product.id,
@@ -54,7 +54,9 @@ export default function AdminPanel4({ products }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export default AdminPanel4;
+
+export async function getStaticProps(context) {
   await dbConnect();
   const { user } = await getSession(context.req, context.res);
   if (user === undefined || !user) {

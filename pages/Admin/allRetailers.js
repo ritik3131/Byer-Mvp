@@ -8,7 +8,7 @@ import dbConnect from "../../utils/dbConnect";
 import Retailers from "../../models/retailerModel";
 import { getSession } from "../../lib/get-session";
 
-export default function AdminPanel2({ retailers }) {
+function AdminPanel2({ retailers }) {
   console.log(retailers);
   function createTempHeading(retailer) {
     return {
@@ -106,7 +106,9 @@ export default function AdminPanel2({ retailers }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export default AdminPanel2;
+
+export async function getStaticProps(context) {
   await dbConnect();
   const { user } = await getSession(context.req, context.res);
   if (user === undefined || !user || !user.isAdmin) {

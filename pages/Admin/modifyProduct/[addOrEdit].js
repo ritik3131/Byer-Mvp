@@ -18,7 +18,7 @@ import Products from "../../../models/productModel";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export default function AdminPanel4({ purpose, productData }) {
+function AdminPanel4({ purpose, productData }) {
   const router = useRouter();
   const [name, setName] = useState(
     purpose === "add" ? "" : productData.productName
@@ -74,7 +74,6 @@ export default function AdminPanel4({ purpose, productData }) {
     }
     router.push("/Admin/allProducts");
   };
-
   const CssTextField = withStyles({
     root: {
       "& label.Mui-focused": {
@@ -266,7 +265,9 @@ export default function AdminPanel4({ purpose, productData }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export default AdminPanel4;
+
+export async function getStaticProps(context) {
   await dbConnect();
   const purpose = context.query.addOrEdit.substring(0, 3);
   const productId =

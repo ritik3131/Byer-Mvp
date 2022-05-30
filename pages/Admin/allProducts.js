@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { getSession } from "../../lib/get-session";
 
-export default function AdminPanel2({ products }) {
+function AdminPanel2({ products }) {
   function createTempHeading(product) {
     return {
       productId: product._id,
@@ -121,7 +121,9 @@ export default function AdminPanel2({ products }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export default AdminPanel2;
+
+export async function getStaticProps(context) {
   await dbConnect();
   const { user } = await getSession(context.req, context.res);
   if (user === undefined || !user || !user.isAdmin) {

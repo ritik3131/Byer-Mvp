@@ -10,7 +10,7 @@ import Orders from "../../../models/orderModel";
 import mongoose from "mongoose";
 import { getSession } from "../../../lib/get-session";
 
-export default function AdminPanel4({
+function AdminPanel4({
   orders,
   totalNumberOfOrders,
   totalValue,
@@ -62,7 +62,9 @@ export default function AdminPanel4({
   );
 }
 
-export async function getServerSideProps(context) {
+export default AdminPanel4;
+
+export async function getStaticProps(context) {
   await dbConnect();
   const { user } = await getSession(context.req, context.res);
   if (user === undefined || !user) {
