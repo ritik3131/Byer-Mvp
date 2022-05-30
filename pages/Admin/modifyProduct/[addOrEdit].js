@@ -267,7 +267,7 @@ function AdminPanel4({ purpose, productData }) {
 
 export default AdminPanel4;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   await dbConnect();
   const purpose = context.query.addOrEdit.substring(0, 3);
   const productId =

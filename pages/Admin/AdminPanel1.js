@@ -97,9 +97,8 @@ function AdminPanel1({
     </>
   );
 }
-export default AdminPanel1;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   await dbConnect();
   const { user } = await getSession(context.req, context.res);
   if (user === undefined || !user || !user.isAdmin) {
@@ -141,3 +140,4 @@ export async function getStaticProps(context) {
   };
 }
 
+export default AdminPanel1;

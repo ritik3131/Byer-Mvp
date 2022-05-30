@@ -108,7 +108,7 @@ function AdminPanel2({ retailers }) {
 
 export default AdminPanel2;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   await dbConnect();
   const { user } = await getSession(context.req, context.res);
   if (user === undefined || !user || !user.isAdmin) {

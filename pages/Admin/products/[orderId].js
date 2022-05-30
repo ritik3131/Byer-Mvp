@@ -56,7 +56,7 @@ function AdminPanel4({ products }) {
 
 export default AdminPanel4;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   await dbConnect();
   const { user } = await getSession(context.req, context.res);
   if (user === undefined || !user) {
